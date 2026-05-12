@@ -1,6 +1,7 @@
 package com.example.laboratorio3hpa4
 
 import android.os.Bundle
+import android.widget.ListView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,5 +17,9 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val listview = findViewById<ListView>(R.id.lvCategorias)
+
+
+
     }
 }
