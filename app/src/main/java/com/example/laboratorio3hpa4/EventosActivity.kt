@@ -15,50 +15,50 @@ class EventosActivity : AppCompatActivity() {
         Evento(
             "Charla de Inteligencia Artificial",
             "15 de junio",
-            "Auditorio principal",
+            "Ciudad del Saber",
             "Conferencia sobre aplicaciones actuales de la inteligencia artificial.",
             "Académico",
-            R.drawable.academico
+            R.drawable.inteligencia
         ),
         Evento(
             "Taller de Kotlin",
             "18 de junio",
-            "Laboratorio 3",
+            "Universidad Tecnológica de Panamá - Edificio 3.",
             "Taller práctico sobre desarrollo Android con Kotlin.",
             "Académico",
-            R.drawable.academico
+            R.drawable.kotlin
         ),
         Evento(
             "Festival Cultural Universitario",
             "20 de junio",
-            "Plaza central",
+            "Universidad Tecnológica de Panamá",
             "Presentaciones artísticas y culturales de estudiantes.",
             "Cultural",
-            R.drawable.cultural
+            R.drawable.festividad
         ),
         Evento(
             "Exposición de Arte",
             "22 de junio",
-            "Salón de eventos",
+            "AltaPlaza Mall",
             "Muestra artística organizada por estudiantes.",
             "Cultural",
-            R.drawable.cultural
+            R.drawable.arte
         ),
         Evento(
             "Torneo de Fútbol",
             "25 de junio",
-            "Cancha universitaria",
+            "Cancha de fútbol UTP",
             "Competencia deportiva entre facultades.",
             "Deportivo",
-            R.drawable.deportivo
+            R.drawable.futbol
         ),
         Evento(
             "Carrera 5K",
             "28 de junio",
-            "Campus universitario",
+            "Cinta Costera 3",
             "Actividad deportiva para estudiantes y docentes.",
             "Deportivo",
-            R.drawable.deportivo
+            R.drawable.carrera
         )
     )
     //Lista de informacion de los eventos
@@ -85,7 +85,7 @@ class EventosActivity : AppCompatActivity() {
         btnVolver.setOnClickListener {
             finish()
         }
-        //Falta ponerle accion al listview si es que se mantiene
+
         // RF-03: Al tocar un evento de la lista, se lanza un Intent explícito
         // hacia DetalleActivity pasando el objeto Evento completo usando Serializable
         listViewEventos.setOnItemClickListener { _, _, position, _ ->

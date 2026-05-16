@@ -36,7 +36,6 @@ class DetalleActivity : AppCompatActivity(){
         tvDetalleLugar.text = evento.lugar
         tvDetalleDescripcion.text = evento.descripcion
 
-
         // RF-04: Intent implícito para abrir el lugar del evento en una app de mapas
         // Se usa el esquema geo: con el nombre del lugar como query
         btnVerMapa.setOnClickListener {
