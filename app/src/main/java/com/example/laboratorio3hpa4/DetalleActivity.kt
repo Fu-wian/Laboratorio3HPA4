@@ -6,6 +6,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.net.Uri
+import androidx.appcompat.app.AlertDialog
+
 class DetalleActivity : AppCompatActivity(){
     companion object{
         const val EXTRA_EVENTO = "extra_evento"// Clave para recuperar el objeto Evento desde el Intent Se define en companion object para que sea accesible desde EventosActivity
@@ -26,7 +28,22 @@ class DetalleActivity : AppCompatActivity(){
 
         // RF-03: Se recupera el objeto Evento completo enviado desde EventosActivity
         // usando getSerializableExtra con la clave definida en el companion object
-        val evento = intent.getSerializableExtra(EXTRA_EVENTO) as Evento
+        @Suppress("DEPRECATION")
+        val evento = intent.getSerializableExtra(EXTRA_EVENTO) as? Evento
+
+        //En caso de que la llamada de evento retorna nulo mostrar una alerta y cerrar el activity
+        if (evento == null) {
+            AlertDialog.Builder(this)
+                .setTitle("Error")
+                .setMessage("No se pudo cargar la información del evento.")
+                .setPositiveButton("Aceptar") { dialog, _ ->
+                    dialog.dismiss()
+                    finish()
+                }
+                .setCancelable(false)
+                .show()
+            return
+        }
 
         // Se muestran todos los campos del evento en la pantalla de detalle
         imgDetalleEvento.setImageResource(evento.imagen)
