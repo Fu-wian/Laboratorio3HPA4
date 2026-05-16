@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
@@ -72,6 +73,7 @@ class EventosActivity : AppCompatActivity() {
         setContentView(R.layout.evento)
         val tvCategoria = findViewById<TextView>(R.id.tvCategoria)
         val listViewEventos = findViewById<ListView>(R.id.listViewEventos)
+        val btnVolver = findViewById<Button>(R.id.btnVolver)
 
         val categoriaRecibida = intent.getStringExtra(MainActivity.EXTRA_CATEGORIA)
 
@@ -85,6 +87,9 @@ class EventosActivity : AppCompatActivity() {
         val adapter = EventoAdapter(this, eventosFiltrados)
         listViewEventos.adapter = adapter
 
+        btnVolver.setOnClickListener {
+            finish()
+        }
         //Falta ponerle accion al listview si es que se mantiene,
         //Si cambiar a otro contenedor modificar todo lo que esta aqui.
 
