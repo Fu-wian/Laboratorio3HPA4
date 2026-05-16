@@ -12,15 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class EventosActivity : AppCompatActivity() {
-    //Clase de datos para los eventos
-    data class Evento(
-        val nombre: String,
-        val fecha: String,
-        val lugar: String,
-        val descripcion: String,
-        val categoria: String,
-        val imagen: Int
-    )
+
     //En caso de que se quiera entrar un intent explicito. Poner una variable que mande un link?
 
     private val eventos = listOf(
@@ -96,42 +88,5 @@ class EventosActivity : AppCompatActivity() {
         //Falta ponerle accion al listview si es que se mantiene,
         //Si cambiar a otro contenedor modificar todo lo que esta aqui.
 
-    }
-    //Clase del adapter personalizado de los eventos para que contenga una imagen, nombre evento, fecha y lugar.
-    class EventoAdapter(
-        private val context: Context,
-        private val eventos: List<Evento>
-    ) : BaseAdapter() {
-
-        override fun getCount(): Int {
-            return eventos.size
-        }
-
-        override fun getItem(position: Int): Any {
-            return eventos[position]
-        }
-
-        override fun getItemId(position: Int): Long {
-            return position.toLong()
-        }
-
-        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-            val vista = convertView ?: LayoutInflater.from(context)
-                .inflate(R.layout.item_evento, parent, false)
-
-            val imgEvento = vista.findViewById<ImageView>(R.id.imgEvento)
-            val tvNombreEvento = vista.findViewById<TextView>(R.id.tvNombreEvento)
-            val tvFechaEvento = vista.findViewById<TextView>(R.id.tvFechaEvento)
-            val tvLugarEvento = vista.findViewById<TextView>(R.id.tvLugarEvento)
-
-            val evento = eventos[position]
-
-            imgEvento.setImageResource(evento.imagen)
-            tvNombreEvento.text = evento.nombre
-            tvFechaEvento.text = evento.fecha
-            tvLugarEvento.text = evento.lugar
-
-            return vista
-        }
     }
 }
