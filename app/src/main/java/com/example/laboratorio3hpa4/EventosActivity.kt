@@ -1,13 +1,8 @@
 package com.example.laboratorio3hpa4
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -90,8 +85,17 @@ class EventosActivity : AppCompatActivity() {
         btnVolver.setOnClickListener {
             finish()
         }
-        //Falta ponerle accion al listview si es que se mantiene,
-        //Si cambiar a otro contenedor modificar todo lo que esta aqui.
+        //Falta ponerle accion al listview si es que se mantiene
+        // RF-03: Al tocar un evento de la lista, se lanza un Intent explícito
+        // hacia DetalleActivity pasando el objeto Evento completo usando Serializable
+        listViewEventos.setOnItemClickListener { _, _, position, _ ->
+            val eventoSeleccionado = eventosFiltrados[position]
+            val intent = Intent(this, DetalleActivity::class.java)
+            intent.putExtra(DetalleActivity.EXTRA_EVENTO, eventoSeleccionado)
+            // putExtra envía el objeto Evento completo, posible gracias a que
+            // la clase Evento implementa la interfaz Serializable
+            startActivity(intent)
 
+        }
     }
 }

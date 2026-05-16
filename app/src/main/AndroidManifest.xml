@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- RF-04: Se declara el Intent geo: en queries para que resolveActivity() Sin esta declaración, resolveActivity() siempre devuelve null -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="geo" />
+        </intent>
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -22,6 +29,8 @@
         </activity>
         <activity
             android:name=".EventosActivity"
+            android:exported="false" />
+        <activity android:name=".DetalleActivity"
             android:exported="false" />
     </application>
 
